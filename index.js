@@ -57,12 +57,14 @@ app.post("/signup", async (request,response)=>{
 console.log(userFromDB);
 
 if(userFromDB){
-	response.status(400).send({message: "email already exists"});
+	response.send({message: "email already exists"});
+	// response.status(400).send({message: "email already exists"});
 	return;
 }
 
 if(password.length < 8){
-	response.status(400).send({message: "password must be longer"});
+	response.send({message: "password must be longer"});
+	// response.status(400).send({message: "password must be longer"});
 	return;
 }
 
@@ -77,7 +79,8 @@ app.post("/login", async (request,response)=>{
 	const userFromDB = await getUserByName(email);
 
 	if(!userFromDB){
-		response.status(401).send({message: "Invalid Credentials"});
+		response.send({message: "Invalid Credentials"});
+		// response.status(401).send({message: "Invalid Credentials"});
 		return;
 	}
 
@@ -93,7 +96,8 @@ app.post("/login", async (request,response)=>{
 		
 		response.send({message: "sucessful login"});
 	}else{
-		response.status(401).send({message: "Invalid Credentials"});
+		response.send({message: "Invalid Credentials"});
+		// response.status(401).send({message: "Invalid Credentials"});
 	}
 
 	
